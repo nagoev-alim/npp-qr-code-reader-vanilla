@@ -1,0 +1,106 @@
+@import "assets/scss/config/fonts";
+@import "assets/scss/config/reset";
+@import "assets/scss/config/vars";
+@import "assets/scss/config/utility";
+@import "assets/scss/modules/typography";
+@import "assets/scss/modules/fields";
+@import "assets/scss/modules/buttons";
+@import "assets/scss/modules/toast";
+@import "assets/scss/config/global";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.app-author {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  --gap: 15px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bcs-grey-3);
+  padding: 10px;
+}
+
+.qr-code-reader {
+  display: grid;
+  gap: var(--gap);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 25px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  height: 290px;
+  width: 100%;
+  transition: height 0.2s ease;
+
+
+  form {
+    height: 250px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 7px;
+    transition: height 0.2s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    img {
+      max-width: 150px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      svg {
+        pointer-events: none;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
+    pointer-events: none;
+    user-select: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s 0.05s ease;
+
+    textarea {
+      grid-column: 1/-1;
+      color: var(--fld-c-primary);
+      text-align: left;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  // Show state
+  &.is-show {
+    height: 520px;
+
+    form {
+      display: grid;
+      place-items: center;
+    }
+
+    .content {
+      user-select: auto;
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
